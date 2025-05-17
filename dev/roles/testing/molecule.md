@@ -266,6 +266,37 @@ with https://ansible.readthedocs.io/projects/molecule/configuration/#molecule.co
 
 [Reference](https://github.com/ansible/molecule/issues/3857)
 
+### ERROR! the role '{ROLE}' was not found ...
+Molecule uses galaxy roles instead of local roles as dependencies when testing;
+however for roles with high inter-dependence, this will cause the following
+error when testing:
+
+``` bash
+ERROR! the role 'r_pufky.apt' was not found in ...
+
+The offending line appears to be:
+
+      ansible.builtin.include_role:
+        name: 'r_pufky.deb.apt'
+              ^ here
+```
+
+When developing a safe option is to link to the development collection on the
+ansible path, which will allow ansible to find the role:
+
+``` bash
+ln -s /var/git/{COLLECTION} ~/.ansible/collections/ansible_collections/r_pufky/{COLLECTION}
+```
+This may lead to issues with molecule; once enough of the collection exists,
+remove the symlink shim to use the generated collection.
+
+Alternatively package and install the collection locally; not recommended:
+
+``` bash
+ansible-galaxy collection build --force
+ansible-galaxy collection install r_pufky.{COLLECTION}-X.X.X.tar.gz
+```
+
 ### CRITICAL Idempotence test failed because of the following tasks
 Not all operations are idempotent. Explicitly disable for testing where
 idempotence cannot be guaranteed.

@@ -3,15 +3,22 @@
 ## Create Environment and Install Packages
 Create python virtual environment, install Ansible and Molecule pip packages:
 ``` bash
-python3 -m venv /var/venv/ansible_collection_srv
-source /var/venv/ansible_collection_srv/bin/activate
+python3 -m venv /var/venv/{REPO}
+source /var/venv/{REPO}/bin/activate
 pip install --upgrade pip
 pip install --upgrade setuptools
 pip install ansible
 pip install argcomplete
-pip install ansible-lint
-pip install molecule
+# Install older ansible-compat layer until issue is resolved.
+# Reference:
+# * https://github.com/ansible/ansible-lint/issues/4533
+# pip install ansible-lint
+# pip install molecule
+pip uninstall -y ansible-compat ansible-lint molecule
+pip install "ansible-compat==24.10.0" ansible-lint molecule
 ```
+* `{REPO}` refers to bare repository name, e.g. **ansible_collection_srv**.
+
 [Reference](https://docs.ansible.com/ansible/2.9/installation_guide/intro_installation.html)
 
 ### Update Ansible Environment
@@ -25,10 +32,10 @@ easier. Update environment file to use *your* specific settings.
 export SRV_DEPLOY="${HOME}/.ansible"  # ${ANSIBLE_HOME}
 
 # Ansible python virtual environment (high read/writes)
-export SRV_VENV='/var/venv/ansible_collection_srv'
+export SRV_VENV='/var/venv/{REPO}'
 
 # SRV git repository root directory (high read only)
-export SRV_GIT='/var/git/ansible_collection_srv'
+export SRV_GIT='/var/git/{REPO}'
 ```
 
 ## Set alternative container storage location (optional)
