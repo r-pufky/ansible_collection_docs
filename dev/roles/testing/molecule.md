@@ -120,7 +120,7 @@ the testing platform.
 ``` yaml
 - name: 'Default | converge | apply debian role all defaults'
   ansible.builtin.include_role:
-    name: 'r_pufky.srv.debian'
+    name: 'r_pufky.deb.os'
 ```
 
 * Validates no runtime errors.
@@ -134,7 +134,7 @@ test many options if they can be individually explicitly verified.
 ``` yaml
 - name: 'isolate specific tasks from role for testing'
   ansible.builtin.include_role:
-    name: 'r_pufky.srv.debian'
+    name: 'r_pufky.deb.os'
     tasks_from: 'apt/packages.yml'
 ```
 
@@ -166,7 +166,7 @@ task subdirectory or file may be used if needed for additional clarification.
 ``` yaml
 - name: '{TEST} | Converge | run locales.yml'
   ansible.builtin.include_role:
-    name: 'r_pufky.srv.debian'
+    name: 'r_pufky.deb.os'
     tasks_from: 'locales.yml'
 ```
 
@@ -253,14 +253,14 @@ with https://ansible.readthedocs.io/projects/molecule/configuration/#molecule.co
 ``` yaml
 - name: 'include full role'
   ansible.builtin.include_role:
-    name: 'r_pufky.srv.debian'
+    name: 'r_pufky.deb.os'
 ```
 
 * Only `include_role` with `tasks_from` when no other tasks are sourced within:
 ``` yaml
 - name: 'include task from role if there are no additional include_roles'
   ansible.builtin.include_role:
-    name: 'r_pufky.srv.debian'
+    name: 'r_pufky.deb.os'
     tasks_from: 'optimizations/firmware.yml'
 ```
 
@@ -268,11 +268,11 @@ with https://ansible.readthedocs.io/projects/molecule/configuration/#molecule.co
 
 ### ERROR! the role '{ROLE}' was not found ...
 Molecule uses galaxy roles instead of local roles as dependencies when testing;
-however for roles with high inter-dependence, this will cause the following
-error when testing:
+however for roles with high inter-dependence, or new collections not yet
+released, this will cause the following error when testing:
 
 ``` bash
-ERROR! the role 'r_pufky.apt' was not found in ...
+ERROR! the role 'r_pufky.{COLLECTION}.{ROLE}' was not found in ...
 
 The offending line appears to be:
 

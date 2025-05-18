@@ -114,7 +114,7 @@ overlapping, duplicated options, resulting in 5k+ line default values files.
 Extended options are defined in a separate file (with no actual YAML variables)
 and cross-reference the actual configuration location.
 
-See `r_pufky.srv.systemd` defaults for example.
+See `r_pufky.deb.systemd` defaults for example.
 ``` yaml
 # Variable: {VARIABLE} | {TYPE}
 ```
