@@ -183,6 +183,21 @@ task subdirectory or file may be used if needed for additional clarification.
       ...
 ```
 
+``` yaml
+- name: 'Dist upgrade | verify | standard | MANUAL VERIFICATION ⚠'
+  ansible.builtin.debug:
+    msg: |
+      ⚠ MANUAL VERIFICATION.
+```
+
+####
+``` yaml
+- name: 'Dist upgrade | verify | standard | MANUAL VERIFICATION 🗘'
+  ansible.builtin.debug:
+    msg: |
+      🗘 MANUAL VERIFICATION.
+```
+
 #### Debug Directives
 Use verbosity to keep debug statements in production releases; and var to
 cleanly print complex variables.
@@ -192,6 +207,38 @@ cleanly print complex variables.
   ansible.builtin.debug:
     var: role_var  # auto jinja escaped
     verbosity: 2  # corresponds to -v count; 0 always displays
+```
+
+##### Long running tasks must notify user (use 🗘)
+Alway message user with working message for long tasks.
+
+``` yaml
+- name: 'Dist upgrade | updating 🗘'
+  ansible.builtin.debug:
+    msg: |
+      🗘 Upgrading distribution. This may take a few minutes.
+```
+
+#### Assert Directives
+Use unicode indicators to explicitly hightlight failures (or pass for inverted
+tests), with `quiet` set.
+
+``` yaml
+- name: 'Assert | requirements'
+  ansible.builtin.assert:
+    quiet: true
+    that: '1 != 1'
+    fail_msg: |
+      ✘ Upgrading distribution. This may take a few minutes.
+```
+
+``` yaml
+- name: 'Assert | negative test'
+  ansible.builtin.assert:
+    quiet: true
+    that: '1 == 1'
+    fail_msg: |
+      ✔ TEST PASSED.
 ```
 
 ## Execute Tests

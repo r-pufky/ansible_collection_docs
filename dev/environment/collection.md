@@ -4,7 +4,7 @@ Only for new repositories without existing collections.
 ``` bash
 git clone https://github.com/{USER}/{REPO} /var/git/{COLLECTION}
 cd ~/git/{COLLECTION}
-ansible-galaxy collection init --init-path . r_pufky.srv
+ansible-galaxy collection init --init-path . r_pufky.{COLLECTION}
 mv -vn r_pufky/srv/* .
 rm -rfv r_pufky
 mkdir -p plugins/modules  # for code like python

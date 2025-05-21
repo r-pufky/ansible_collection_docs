@@ -12,7 +12,7 @@ Prerequisite:
 
 [Testing](testing/molecule.md)
 
-[Committing](commit.md)
+[Committing](../commit.md)
 
 # References
 

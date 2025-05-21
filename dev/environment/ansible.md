@@ -34,7 +34,7 @@ export SRV_DEPLOY="${HOME}/.ansible"  # ${ANSIBLE_HOME}
 # Ansible python virtual environment (high read/writes)
 export SRV_VENV='/var/venv/{REPO}'
 
-# SRV git repository root directory (high read only)
+# GIT repository root directory (high read only)
 export SRV_GIT='/var/git/{REPO}'
 ```
 

@@ -9,7 +9,6 @@ exceptions.
 ## 80 character width.
 Only extend past 80 characters if long variable names make it impossible.
 
-
 ```yaml
 - ansible.builtin.set_fact:
     JWT_SIGNING_PRIVATE_KEY_FILE:

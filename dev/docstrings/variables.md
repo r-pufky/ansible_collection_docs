@@ -10,6 +10,7 @@ to start (but are preferred). Full line comments which are statements do.
 # Full line statement comment with period.
 
 line of code  # inline comment
+another line # Some complex description.
 gather_facts: true  # ansible_virtualization_role
 package import for testing  # ansible.builtin.module (specific reason)
 ```

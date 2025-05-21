@@ -10,7 +10,7 @@ Prerequisite:
 
 [Testing](testing.md)
 
-[Committing](commit.md)
+[Committing](../commit.md)
 
 [Releasing](release.md)
 

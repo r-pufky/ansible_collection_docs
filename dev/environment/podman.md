@@ -9,8 +9,8 @@ Prerequisite:
 ``` bash
 source {VENV}/bin/activate
 pip install molecule-plugins[podman]
-pacman -Syu crun  # OCI implementation (faster, less memory than runc)
-pacman -Syu podman  # service testing (non kernel, sysctl, networking, etc)
+pacman -Syu crun  # OCI implementation (faster, less memory than runc).
+pacman -Syu podman  # Service testing (non kernel, sysctl, networking, etc).
 ```
 [Reference](https://github.com/ansible-community/molecule-podman)
 

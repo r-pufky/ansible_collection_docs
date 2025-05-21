@@ -21,7 +21,6 @@ ansible > settings > user | workspace
 
 Set for the user or the workspace.
 
-
 ## Set alternative container storage location (optional)
 Developing ansible will thrash disk especially running ansible-lint after every
 file save. Relocate high-use directories to a disk that can handle
