@@ -62,6 +62,28 @@ Special Case:
   * Wildcards allowed.
 ```
 
+### Docstring: `Versions`
+Detailed information about versioning scheme and what changes are allowed for
+the role with an explicit usage recommendation.
+
+``` yaml
+Versions ({SCHEMA}):
+   {SCHEMA TYPE}: {DESCRIPTION EXTENDED}.
+       RECOMMEND: {DESCRIPTION EXTENDED}.
+```
+
+``` yaml
+# VERSIONS (Schematic):
+#       MAJOR: Unsafe - requires major role changes; only default MAJOR version
+#              is supported. See other branches if they exist.
+#       MINOR: Unsafe - Paperless has a history of introducing breaking changes
+#              on minor updates (see 2.14, 2.15, 2.16). These should be
+#              considered 'major' versions. See other branches if they exist.
+#       PATCH: Safe - Usually requires no role updates. Some have included
+#              breaking changes (2.16.0 - 2.16.2).
+#   RECOMMEND: Only increment PATCH. Never use 'latest'.
+```
+
 ### Docstring: `Values`
 Explicit accepted default values.
 ``` yaml
