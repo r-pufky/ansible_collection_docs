@@ -129,6 +129,44 @@ WARNING Driver vagrant does not provide a schema.
 
 # Troubleshooting
 
+### Molecule test fails during create
+Vagrant VM name/path length limitation. Molecule creates a VM name combining
+test, name, box, OS, network, and a random hash; which leads to excessively
+long VM names (see underlying virtualization manager).
+
+``` bash
+fatal: [localhost]: FAILED! => {
+    "changed": false,
+    "cmd": [
+        "/usr/bin/vagrant",
+        "up",
+        "--no-provision"
+    ],
+    "rc": 1
+}
+
+STDERR:
+
+### YYYY-MM-DD 20:32:26 ###
+### YYYY-MM-DD 20:32:26 ###
+There was an error while executing `VBoxManage`, a CLI used by Vagrant
+for controlling VirtualBox. The command and stderr is shown below.
+
+Command: ["startvm", "b3415658-8f60-4026-8375-f6ec52014db5", "--type", "headless"]
+
+Stderr: VBoxManage: error: Failed to construct device 'ichac97' instance #0 (VERR_CFGM_NOT_ENOUGH_SPACE)
+VBoxManage: error: Details: code NS_ERROR_FAILURE (0x80004005), component ConsoleWrap, interface IConsole
+
+MSG:
+
+Failed to start the VM(s): See log file '/mnt/fast/cache/mono/cache/molecule/network/interfaces_resolv/vagrant.err'
+```
+
+Use shorter component names:
+* VM instance name in `molecule.yml`.
+* Rename molecule test to shorter name.
+* Extreme cases may require cloning repo with a shorter root repository name.
+
 ## Failed to lock apt for exclusive operation.
 Debian virutalbox VM uses root to configure and test the instance. All Molecule
 setup/teardown steps require root user.
