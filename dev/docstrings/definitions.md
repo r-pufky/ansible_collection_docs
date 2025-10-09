@@ -35,6 +35,13 @@ Abbreviated datatype
  `dict`             | `{}`
  `{TYPE} or {TYPE}` | multiple types, preferred type first
 
+###### type header
+Variable leading type header for docstrings.
+
+List of {[TYPE](#type)}.
+Enable
+Disable
+
 ###### description
 Use present active voice. Include datatype if it is not implicitly apparent
 what it is. Single line descriptions do not end in `.` unless noted.
@@ -57,6 +64,19 @@ possible:
 * `{ROLE}` for anything role related.
 * `{VERSION}` for anything requiring a specific ansible version.
 * `{RELEASE}` for any OS/service release related.
+
+###### schema
+Versioning schema.
+
+* `Schematic` for schematic.
+* `Date` for release date.
+
+###### schema type
+Versioning schema component types.
+
+* `MAJOR` release.
+* `MINOR` release.
+* `PATCH` release.
 
 ###### var example
 Working examples of var usage (may include multiple examples with one vertical
