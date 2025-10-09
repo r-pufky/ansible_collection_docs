@@ -21,6 +21,8 @@ ansible-galaxy role init --init-path roles example
 Standards for directory layout:
 ```
 ├──── .ansible  # transient molecule testing cache (very large); do not commit.
+│               # Generally this should be linked to tmpfs for fast development
+│               # and testing. '.ansible -> /tmp/ansible-cache'.
 ├─┬── defaults
 │ └┬─ main
 │  ├─ main.yml  # ansible specific role configuration (users, locations, etc).
@@ -31,7 +33,13 @@ Standards for directory layout:
 ├─┬── meta
 │ └┬─ main.yml  # galaxy metadata
 │  └─ requirements.yml  # collection and roles required
-├──── tasks
+├─┬── tasks  # In order of execution.
+│ ├── assert.yml  # Pre-role execution assertions
+│ ├── annotate.yml  #  Annotate user data and sanity check
+│ ├── prep.yml  # Base system preparation required for install
+│ ├── install.yml  # Install role packages and binaries
+│ ├── config.yml  # Configure role packages
+│ └── validate.yml  # Validate install correct and service running
 ├──── templates
 ├──── vars
 ├──── LICENSE
