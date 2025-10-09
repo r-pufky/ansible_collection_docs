@@ -11,10 +11,15 @@ containers (base OS, kernel, firmware, advanced networking, etc) these should
 Created in current working directory.
 
 ## System Images Used
+Debian has stopped creating images due to licensing issues.
 
-* debian/bookworm64
+* inception-of-things/trixie
+* boxen/debian-13 (alt - currently SSH key build issues)
 
-[Reference](https://portal.cloud.hashicorp.com/vagrant/discover/debian)
+Alternatively a non-maintained Debian image may be created:
+https://raju.dev/building-debian-13-trixie-vagrant-image/
+
+[Reference](https://portal.cloud.hashicorp.com/vagrant/discover)
 
 ## Molecule Setup
 Standard molecule setup for vagrant with virtualbox VM.
@@ -68,8 +73,8 @@ provisioner:
   #     {IMAGE}-{TEST}:
   #       setup_variables: true
 platforms:
-  - name: '{ROLE}-{IMAGE}-vm-{TEST}'  # debian-bookworm64-vm-test
-    box: 'debian/bookworm64'
+  - name: '{ROLE}-{IMAGE}-vm-{TEST}'  # debian-13-vm-test
+    box: 'inception-of-things/trixie'
     memory: 4096
     cpus: 2
     interfaces:
@@ -78,8 +83,11 @@ platforms:
         type: 'dhcp'
         # type: static
         # ip: 192.168.56.10  # default is 192.168.56.0/21
-        # guest: 80
-        # host: 8080
+    instance_raw_config_args:
+      - 'vm.network "forwarded_port", guest: 8443, host: 8443'
+      - 'vm.network "forwarded_port", guest: 8080, host: 8080'
+      - 'vm.network "forwarded_port", guest: 8880, host: 8880'
+      - 'vm.network "forwarded_port", guest: 8443, host: 8843'
 verifier:
   name: 'ansible'
 lint: |
