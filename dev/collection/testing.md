@@ -125,3 +125,38 @@ plugins/modules/demo_hello.py validate-modules:missing-gplv3-license
 [Sanity Validate](https://docs.ansible.com/ansible/latest/dev_guide/testing/sanity/validate-modules.html)
 
 [Sanity Lint Rules](https://ansible.readthedocs.io/projects/lint/rules/sanity/)
+
+###### NOTES ######
+TODO(docs): format and update.
+
+Examples of unit and integration tests.
+# https://github.com/ansible-collections/community.general/blob/main/tests/unit/plugins/filter/test_json_patch.py
+# https://github.com/ansible-collections/community.general/blob/main/tests/integration/targets/filter_dict/tasks/main.yml
+
+
+For data needed:
+* ansible-galaxy collection build -f
+* ansible-galaxy collection install -f r_pufky.data...tar.gz
+* cd ~/.ansible/collections/ansible_collections/r_pufky/data
+
+* ansible-test {unit,integration,sanity}
+* **important** any changes requires rebuilding, installing **AND**
+  * cd ~; cd - (exit and re-enter the directory to hit new build location.)
+https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_testing.html#testing-collections
+
+https://medium.com/@andrewjamesdawes/run-ansible-test-integration-tests-locally-on-docker-and-over-ssh-d8d658ba118b
+
+
+### WARNING: Unable to determine context for the following test targets, they will be run on the target host: dotted2dict_filter, v3
+
+A controller and a target were not specified when running the test. This is OK for tests that are run on localhost with NO impact on the system (e.g. filters).
+# https://github.com/ansible-collections/community.general/blob/main/tests/unit/plugins/filter/test_json_patch.py
+# https://github.com/ansible-collections/community.general/blob/main/tests/integration/targets/filter_dict/tasks/main.yml
+
+
+# basically every rebuild needs a re-entry into the collectoin to use the correct inode.
+ansible-galaxy collection build -f
+ansible-galaxy collection install -f r_pufky-data-{VERSION}.tar.gz
+cd ~/.ansible/collections/ansible_collections/r_pufky/data
+ansible-test sanity
+ansible-test integration
