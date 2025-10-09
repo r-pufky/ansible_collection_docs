@@ -272,6 +272,45 @@ molecule --debug ${COMMAND}  # will enabling verbose debugging.
 See [podman](podman.md), [vagrant](vagrant.md), and [manual vm](manual_vm.md)
 for framework specific troubleshooting.
 
+### YAML files are reverted on test execution
+File linking or caching issue with IDE or Molecule. Test caching issue reverts
+the file to cached copy when molecule test was initially setup. Resolve by
+clearing **all** caches and re-open the affected file.
+
+Suspected causes:
+* SSHFS connection drops.
+* Rebooting while molecule testing instances are running.
+* IDE environment using stale file handle.
+
+1. Simplest fix is to explicitly **close** the file in question, **reopen** it
+   and re-save it. Resolves in a majority of cases (file link is changed in
+   source but the IDE never picks up the change). Re-run tests.
+
+2. Remove all molecule test state from all tested roles
+
+   ``` bash
+   for x in $(ls -1); do pushd ${x} && molecule destroy --all && popd ; done
+   ```
+
+   Clean out all ansible caches
+   ``` bash
+   molecule destroy --all
+   molecule reset
+   rm -rfv ~/.cache/molecule/*
+   rm -rfv /tmp/ansible-tmp*
+   rm -rfv /tmp/ansible-cache/*
+   rm -rfv ~/.ansible/*
+   rm -rfv ~/.ansible_async/*
+   ```
+
+3. **CLOSE** the file with the issue in the editor and reopen it.
+
+4. Re-run tests.
+
+# Clean all molecule tests which may have been running containers before reboot
+# Must all be molecule enabled role.s
+for x in $(ls -1); do pushd ${x} && molecule destroy --all && popd ; done
+
 ### ERROR! Could not find or access
 Molecule uses galaxy roles instead of local roles as dependencies when testing;
 however for roles with high inter-dependence, this will cause the following
