@@ -55,14 +55,14 @@ Python 3.11 errors -- likely /tmp/ansible-cache is caching old modules clear.
 
 * update README.md and commit
 
+---> update docs with release info for debian packages vs. custom installs.
+     includes branches for debian OS versions only.
 
 ### Releases
 Major release versions track Debian release versions:
 
 * **[13.x.x](https://github.com/r-pufky/ansible_apt)**: 13 Trixie.
 * **[12.x.x](https://github.com/r-pufky/ansible_apt/tree/12.x)**: 12 Bookworm.
-
-
 
   Final Debian 12.x release.
 
@@ -71,7 +71,7 @@ Major release versions track Debian release versions:
 * branch
   git tag 12.0.0
   git push && git push --tags
-  git checkout -b 12.x  (git checkout -b 12.x {ID})
+  git checkout -b 12.x  (previous commit git checkout -b 12.x {ID})
   git push -u origin 12.x
   git checkout main
 
@@ -82,6 +82,9 @@ Major release versions track Debian release versions:
 
 * grep bookworm -> trixie
 * grep 12.x -> 13.x
+* grep fail:
+* grep debug:
+* grep msg:
 * resolve any todo's
 * Update vars/main.yml
   * dates, packages, etc.
@@ -116,19 +119,18 @@ Major release versions track Debian release versions:
 │ some other value.
 
 
-* commit with tag 13.0.0
+### Releases
+Release format: **{OS}-{SERVICE}-{ROLE}**
 
-Migrate to Debian 13.x (Trixie).
+Each type inherits the versioning system used; defaulting to schematic
+versioning.
 
-Migrate to Debian 13.x (Trixie).
+`12.0.0-2.0.3-1.0.0`
+* 12.0.0 - Debian 12 (bookworm).
+* 2.0.3 - Service/app version.
+* 1.0.0 - Role version.
 
+Releases are branched on Debian releases:
 
-ansible_collection_deb -- currently in 12.x -- updates to roles need to be
-updated in main, NOT 12.x.
-- unstage 12.x changes AFTER committing main
-- stage updates to main
-
-
-
-* PACKAGE VERSIONS TRACK DEBIAN LIKE COLLECTIONS
-* INDEPENDENT VERSION TRACK PACKAGE LIKE PLEX.
+* **[13.x.x](https://github.com/r-pufky/ansible_deluge)**: 13 Trixie.
+* **[12.x.x](https://github.com/r-pufky/ansible_deluge/tree/12.x)**: 12 Bookworm.
