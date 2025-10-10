@@ -99,26 +99,6 @@ Major release versions track Debian release versions:
     <(curl -s https://forgejo.org/docs/v11.0/admin/config-cheat-sheet/)
     <(curl -s https://forgejo.org/docs/v10.0/admin/config-cheat-sheet/)
 
-* Update alert messaging:
-  * Use box for fixed-lenght alert header, then list variables below
-
-╭───────────────────────────────────────────────────────────────────╮
-│                                                                   │
-│   Distribution is being upgraded. This will take a few minutes.   │
-│                                                                   │
-╰───────────────────────────────────────────────────────────────────╯
-
-╭───────────────────────────────────────────────────────────────────╮
-│                                                                   │
-│   Distribution is being upgraded. This will take a few minutes.   │
-│                                                                   │
-├───────────────────────────────────────────────────────────────────╯
-│ var: value
-│ var: value
-│
-│ some other value.
-
-
 ### Releases
 Release format: **{OS}-{SERVICE}-{ROLE}**
 

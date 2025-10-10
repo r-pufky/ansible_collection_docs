@@ -24,26 +24,26 @@ Standards for directory layout:
 │               # Generally this should be linked to tmpfs for fast development
 │               # and testing. '.ansible -> /tmp/ansible-cache'.
 ├─┬── defaults
-│ └┬─ main
+│ ╰┬─ main
 │  ├─ main.yml  # ansible specific role configuration (users, locations, etc).
 │  ├─ *.yml  # service specific configuration; named by service or type
-│  └─ ports.yml  # firewall definitions even if not used.
+│  ╰─ ports.yml  # firewall definitions even if not used.
 ├──── handlers
 ├──── molecule  # unit testing
 ├─┬── meta
-│ └┬─ main.yml  # galaxy metadata
-│  └─ requirements.yml  # collection and roles required
+│ ╰┬─ main.yml  # galaxy metadata
+│  ╰─ requirements.yml  # collection and roles required
 ├─┬── tasks  # In order of execution.
 │ ├── assert.yml  # Pre-role execution assertions
 │ ├── annotate.yml  #  Annotate user data and sanity check
 │ ├── prep.yml  # Base system preparation required for install
 │ ├── install.yml  # Install role packages and binaries
 │ ├── config.yml  # Configure role packages
-│ └── validate.yml  # Validate install correct and service running
+│ ╰── validate.yml  # Validate install correct and service running
 ├──── templates
 ├──── vars
 ├──── LICENSE
-└──── README.md
+╰──── README.md
 ```
 
 ## `0640 {USER}:{USER}` meta/main.yml

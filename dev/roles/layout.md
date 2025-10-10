@@ -10,14 +10,14 @@ see previous work in other roles and update documentation.
 │├┬─ main
 ││├─ main.yml          # Role specific configuration (users, locations, etc).
 ││├─ *.yml             # service specific configuration; named by service/type.
-││└─ ports.yml         # Firewall definitions, even if not used.
-│└┬─ config            # Service specific configuration (what role manages).
+││╰─ ports.yml         # Firewall definitions, even if not used.
+│╰┬─ config            # Service specific configuration (what role manages).
 │ ├─ {DIR}             # Very large configurations may require breaking
 │ │                    # configuration into sub directories for configuration
 │ │                    # multiple dependencies or sections; follow previous
 │ │                    # guidance for files. See r_pufky.deb.systemd,
 │ │                    # r_pufky.deb.deluge.
-│ └─ {FILE}            # Break into sections based on service documentation.
+│ ╰─ {FILE}            # Break into sections based on service documentation.
 ├─── docs              # Personal documentation and notes; these are carried
 │                      # over from sphinx and are currently free-form. Use
 │                      # README.md.
@@ -31,16 +31,16 @@ see previous work in other roles and update documentation.
 │                      # order of) appearance. See r_pufky.deb.deluge.
 ├─── LICENSE           # Use GNU Affero General Public License.
 ├┬── meta
-│└┬─ main.yml          # Galaxy metadata, MUST specify 'role_name'. As of
+│╰┬─ main.yml          # Galaxy metadata, MUST specify 'role_name'. As of
 │ │                    # Galaxy-2.0 dependencies are listed in the
 │ │                    # {COLLECTION}/galaxy.yml. 'description' is imported to
 │ │                    # the collection description on galaxy.
-│ └─ requirements.yml  # Remove. Only used for dependencies in Galaxy-1.0. Use
+│ ╰─ requirements.yml  # Remove. Only used for dependencies in Galaxy-1.0. Use
 │                      # {COLLECTION}/galaxy.yml
 ├┬── molecule          # Unit testing.
 │├── cache             # Testing cache location, include downloaded files and
 ││                     # generated testing data. No restrictions.
-│└┬─ {TEST}            # Default tests should cover default usage. Add tests
+│╰┬─ {TEST}            # Default tests should cover default usage. Add tests
 │ │                    # for regressions, and test all possible configuration
 │ │                    # setup for roles. MUST be able to rely on tests to
 │ │                    # signify role/update breakage.
@@ -50,7 +50,7 @@ see previous work in other roles and update documentation.
 │ │                    # by default with a message on how to enable.
 │ ├─ converge.yml      # Minimize complexity and execute role; test assertion
 │ ├─ converge.yml      # cases here.
-│ └─ verify.yml        # Validate test cases. Use r_pufky.lib.tests.
+│ ╰─ verify.yml        # Validate test cases. Use r_pufky.lib.tests.
 ├─── README.md         # See pre-existing work; standardize.
 ├┬── tasks             # In order of execution. If a step contains minimal
 ││                     # tasks, it is OK to role those tasks into main.yml or
@@ -108,7 +108,7 @@ see previous work in other roles and update documentation.
 ││                     #   expected state of the service).
 ││                     # * Cleanup any files as needed.
 ││                     # * Write status message.
-│└── {FILE}.yml        # Additional files may be included as needed for:
+│╰── {FILE}.yml        # Additional files may be included as needed for:
 │                      # * Complex service configuration simplification.
 │                      # * Loops.
 │                      # * Service start, polling, and additional tasks for
@@ -121,12 +121,12 @@ see previous work in other roles and update documentation.
 │                      # directories are allowed as needed. See
 │                      # r_pufky.srv.forgejo, r_pufky.srv.postgres,
 │                      # r_pufky.srv.deluge.
-└┬── vars
+╰┬── vars
  ├── main.yml          # Role configuration, including package definitions,
  │                     # default user configuration, download locations.
- └┬─ main              # Only use main directory if var templates are used.
+ ╰┬─ main              # Only use main directory if var templates are used.
   ├─ main.yml
-  └─ templates.yml     # Templated data structures used for sanitizing user
+  ╰─ templates.yml     # Templated data structures used for sanitizing user
                        # input. These should be set to default values and
                        # combined with user data to set defaults for complex
                        # data structures.
