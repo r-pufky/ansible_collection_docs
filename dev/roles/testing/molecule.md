@@ -8,12 +8,12 @@ Primary test framework. Use podman as it provides a full systemd container
 without **many** of the *systemd*, *networking*, *daemon*, and space issues
 that come along with using [docker](https://github.com/r-pufky/ansible_pihole/pull/21#issuecomment-1716822044).
 
-## [Vagrant Configuration](vagrant.md)
+## [Vagrant Configuration](../../vagrant/testing.md)
 Vagrant VMs are **ONLY** used to test cases which cannot be tested in
 containers (kernel, firmware, advanced networking, etc); always use **podman**
 first.
 
-## [Manual VM Configuration](manual_vm.md)
+## [Manual VM Configuration](../../vagrant/manual_vm.md)
 **Extreme** circumstances only; such as testing UEFI configuration. Where full
 hardware virtualization and manual input are needed to test (e.g. secure boot
 requiring manual steps, etc). These cannot be automated and should always be
@@ -269,7 +269,7 @@ molecule --debug ${COMMAND}  # will enabling verbose debugging.
 ```
 
 ## Troubleshooting
-See [podman](podman.md), [vagrant](vagrant.md), and [manual vm](manual_vm.md)
+See [podman](podman.md), [vagrant](../../vagrant/testing.md), and [manual vm](../../vagrant/manual_vm.md)
 for framework specific troubleshooting.
 
 ### YAML files are reverted on test execution

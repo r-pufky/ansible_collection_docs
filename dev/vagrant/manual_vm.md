@@ -1,8 +1,8 @@
 # Molecule: Manual VM
 Prerequisite:
-* [ansible environment](../../environment/ansible.md)
-* [virtualbox](../../environment/virtualbox.md)
-* [vagrant](../../environment/vagrant.md)
+* [ansible environment](../environment/ansible.md)
+* [virtualbox](../environment/virtualbox.md)
+* [vagrant](./env.md)
 
 **Extreme** circumstances only; such as testing UEFI configuration. Where full
 hardware virtualization and manual input are needed to test (e.g. secure boot
