@@ -1,13 +1,13 @@
 # Commits
 Prerequisite:
-* [ansible environment](./environment/ansible.md)
+* [ansible environment](../environment/ansible.md)
 
 ## Ensure all TODOs are valid
 ``` bash
 grep -ri todo
 ```
 
-## Ensure linting follows [guidelines](./roles/linting.md)
+## Ensure linting follows [guidelines](../roles/linting.md)
 ``` bash
 grep -ri yamllint  # yamllint
 grep -ri noqa  # ansible-lint
@@ -37,16 +37,16 @@ build_ignore:
 ## Update collection submodule reference
 Required otherwise the collection will not use the updated module on checkout.
 
-[Update Submodule Reference](creation.md#update-submodules-for-collection)
+[Update Submodule Reference](../creation.md#update-submodules-for-collection)
 
 ## Versioning
 Per [Semantic Versioning v2](https://semver.org/)
 
-* Bump version in [galaxy.yml](../../galaxy.yml)
+* Bump version in [galaxy.yml](../../../galaxy.yml)
   * Major: new platform release (debian release) / breaking changes
   * Minor: added functionality / non-breaking changes
   * Point: bug fixes / updates
-* Tag commit with galaxy version per [galaxy.yml](../../galaxy.yml)
+* Tag commit with galaxy version per [galaxy.yml](../../../galaxy.yml)
 
 Until collection is migrated publicly Major will always be `0` as this
 prevent galaxy inclusion (`1.0.0` is the minimum version).

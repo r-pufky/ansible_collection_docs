@@ -1,8 +1,8 @@
 # Molecule: Vagrant with VirtualBox VMs
 Prerequisite:
 * [ansible environment](../environment/ansible.md)
-* [virtualbox](../virtualbox/virtualbox.md)
-* [vagrant](./setup.md)
+* [virtualbox](../virtualbox/README.md)
+* [vagrant](setup.md)
 
 
 ## System Images Used
@@ -12,7 +12,10 @@ Debian has stopped creating images due to licensing issues.
 * [boxen/debian-13](https://portal.cloud.hashicorp.com/vagrant/discover/boxen/debian-13)
   (alt - currently SSH key build issues)
 
-Alternatively a [non-maintained Debian image may be created.](https://raju.dev/building-debian-13-trixie-vagrant-image/)
+### Image repositories
+* [hashicorp.com](https://portal.cloud.hashicorp.com/vagrant/discover/)
+* [osboxes.org](https://www.osboxes.org/debian/)
+* Alternatively a [non-maintained Debian image may be created.](https://raju.dev/building-debian-13-trixie-vagrant-image/)
 
 
 ## Molecule Setup

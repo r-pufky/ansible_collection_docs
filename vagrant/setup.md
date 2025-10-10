@@ -1,7 +1,7 @@
 # Setup Vagrant Environment
 Prerequisite:
 * [ansible environment](../environment/ansible.md)
-* [virtualbox](../virtualbox/virtualbox.md)
+* [virtualbox](../virtualbox/README.md)
 
 
 ## Install Packages

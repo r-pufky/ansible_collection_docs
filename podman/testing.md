@@ -1,7 +1,7 @@
 # Molecule: Podman Containers
 Prerequisite:
 * [ansible environment](../environment/ansible.md)
-* [podman](./setup.md)
+* [podman](setup.md)
 
 Use podman as it is a full systemd container and does not many of the issues
 (including network issues) that docker does.

@@ -32,11 +32,11 @@ systemctl reboot
 #### Confirm each command works
 ``` bash
 vboxmanage --version  # Executable with modules loaded.
-> 7.1.4r165100
+> 7.1.4r165100  # Installed version.
 vagrant global-status
 vagrant up --provider virtualbox  # Provides details why it is not running.
 ```
-[Reference](../virtualbox/virtualbox.md)
+[Reference](../virtualbox/README.md)
 
 
 ### VERR_CFGM_NOT_ENOUGH_SPACE

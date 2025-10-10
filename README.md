@@ -1,12 +1,21 @@
-# r_pufky.srv
-Serve.
+# Ansible Collection Documentation
+Documentation and standards used for collection creation.
 
-Manage a complete serving infrastructure.
 
 ## Development
 
-[Environment](dev/environment/README.md)
+[Environment](environment/README.md)
 
-[Collection](dev/collection/README.md)
+[Collection](collection/README.md)
 
-[Role](dev/roles/README.md)
+[Docstrings](docstrings/README.md)
+
+[Molecule](molecule/README.md)
+
+[Podman](podman/README.md)
+
+[Roles](roles/README.md)
+
+[Vagrant](vagrant/README.md)
+
+[VirtualBox](virtualbox/README.md)

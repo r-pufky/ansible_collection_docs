@@ -2,7 +2,7 @@
 Follow best practices with additional requirements set forth in these docs.
 
 Prerequisite:
-* [ansible environment](ansible.md)
+* [ansible environment](../environment/ansible.md)
 
 [Environment Setup](../environment/README.md)
 
@@ -10,7 +10,7 @@ Prerequisite:
 
 [Testing](testing.md)
 
-[Committing](../commit.md)
+[Committing](commit.md)
 
 [Releasing](release.md)
 

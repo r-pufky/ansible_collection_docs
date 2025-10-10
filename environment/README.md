@@ -2,11 +2,11 @@
 
 [Ansible](ansible.md)
 
-[Podman](../podman/setup.md)
+[Podman](../podman/README.md)
 
-[VirtualBox](../virtualbox/virtualbox.md)
+[VirtualBox](../virtualbox/README.md)
 
-[Vagrant](../vagrant/setup.md)
+[Vagrant](../vagrant/README.md)
 
 [VSCodium (VSCode)](vscodium.md)
 
