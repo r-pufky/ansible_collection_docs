@@ -1,6 +1,6 @@
 # Setup VirtualBox Environment
 Prerequisite:
-* [ansible environment](../ansible/README.md)
+* [Ansible Environment](../ansible/README.md)
 
 
 ## Install Packages
@@ -11,7 +11,7 @@ pamac install virtualbox  # No additional dependencies.
 mhwd-kernel -l
 mhwd-kernel -li  # Install at least the running kernel.
 pamac install linux{VERSION}-virtualbox-host-modules
-pip install molecule-plugins[virtualbox]
+pip install molecule-plugins[VirtualBox]
 gpasswd -a ${USER} vboxusers  # Add user to virtualbox users.
 systemctl reboot  # Install extended features first if needed.
 ```

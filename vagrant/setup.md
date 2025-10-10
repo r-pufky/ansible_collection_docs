@@ -1,7 +1,7 @@
 # Setup Vagrant Environment
 Prerequisite:
-* [ansible environment](../ansible/README.md)
-* [virtualbox](../virtualbox/README.md)
+* [Ansible Environment](../ansible/README.md)
+* [VirtualBox](../virtualbox/README.md)
 
 
 ## Install Packages
@@ -9,7 +9,7 @@ Prerequisite:
 ``` bash
 source {VENV}/bin/activate
 pamac install vagrant
-pip install molecule-plugins[vagrant]
+pip install molecule-plugins[Vagrant]
 ```
 [Reference](https://wiki.archlinux.org/title/Vagrant)
 

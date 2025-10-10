@@ -1,12 +1,12 @@
 # Setup Rootless Podman Environment
 Prerequisite:
-* [ansible environment](../ansible/README.md)
+* [Ansible Environment](../ansible/README.md)
 
 ## Install Packages
 
 ``` bash
 source ansible.env  # source {VENV}/bin/activate
-pip install molecule-plugins[podman]
+pip install molecule-plugins[Podman]
 pacman -Syu crun  # OCI implementation (faster, less memory than runc).
 pacman -Syu podman  # Service testing (non kernel, sysctl, networking, etc).
 ```

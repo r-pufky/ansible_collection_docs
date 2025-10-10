@@ -6,4 +6,12 @@ dependencies.
 
 [VSCodium (VSCode)](vscodium.md)
 
-[Collection (one-time init)](../collection/setup.md)
+[Collection Creation](collection.md)
+
+[Role Creation](role.md)
+
+[Linting](linting.md)
+
+[Releasing](release.md)
+
+[Troubleshooting](troubleshooting.md)

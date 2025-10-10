@@ -1,8 +1,8 @@
 # Manual VM Creation
 Prerequisite:
-* [ansible environment](../ansible/README.md)
-* [virtualbox](../virtualbox/README.md)
-* [vagrant](setup.md)
+* [Ansible Environment](../ansible/README.md)
+* [VirtualBox](../virtualbox/README.md)
+* [Vagrant](setup.md)
 
 **Extreme** circumstances only; such as testing UEFI configuration. Where full
 hardware virtualization and manual input are needed to test (e.g. secure boot

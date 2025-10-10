@@ -1,13 +1,13 @@
 # Commits
 Prerequisite:
-* [ansible environment](../ansible/README.md)
+* [Ansible Environment](../ansible/README.md)
 
 ## Ensure all TODOs are valid
 ``` bash
 grep -ri todo
 ```
 
-## Ensure linting follows [guidelines](../roles/linting.md)
+## Ensure linting follows [guidelines](../ansible/linting.md)
 ``` bash
 grep -ri yamllint  # yamllint
 grep -ri noqa  # ansible-lint

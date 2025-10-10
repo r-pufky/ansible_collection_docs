@@ -1,8 +1,8 @@
 # Molecule: Vagrant with VirtualBox VMs
 Prerequisite:
-* [ansible environment](../ansible/README.md)
-* [virtualbox](../virtualbox/README.md)
-* [vagrant](setup.md)
+* [Ansible Environment](../ansible/README.md)
+* [VirtualBox](../virtualbox/README.md)
+* [Vagrant](setup.md)
 
 
 ## System Images Used

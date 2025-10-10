@@ -2,7 +2,7 @@
 Follow best practices with additional requirements set forth in these docs.
 
 Prerequisite:
-* [ansible environment](../ansible/README.md)
+* [Ansible Environment](../ansible/README.md)
 
 [Environment Setup](../ansible/README.md)
 
@@ -12,7 +12,7 @@ Prerequisite:
 
 [Committing](commit.md)
 
-[Releasing](release.md)
+[Releasing](../ansible/release.md)
 
 # TODO's
 
