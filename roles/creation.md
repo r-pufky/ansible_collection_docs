@@ -1,6 +1,6 @@
 # Role Creation
 Prerequisite:
-* [ansible environment](../environment/ansible.md)
+* [ansible environment](../ansible/README.md)
 
 All roles are added as [submodules](submodules.md) in the collection repo.
 

@@ -2,9 +2,9 @@
 Follow best practices with additional requirements set forth in these docs.
 
 Prerequisite:
-* [ansible environment](../environment/ansible.md)
+* [ansible environment](../ansible/README.md)
 
-[Environment Setup](../environment/README.md)
+[Environment Setup](../ansible/README.md)
 
 [Modules](modules.md)
 

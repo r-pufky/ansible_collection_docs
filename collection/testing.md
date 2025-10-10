@@ -1,6 +1,6 @@
 # Collection Testing
 Prerequisite:
-* [ansible environment](../environment/ansible.md)
+* [ansible environment](../ansible/README.md)
 
 ## Build and Install Local Collection
 The collection must be built and installed locally to be tested.

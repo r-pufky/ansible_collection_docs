@@ -1,12 +1,18 @@
 # Unicode Glyphs
 
-  Glyph | Code  | use
- -------|-------|----------------
-  ⚠     | 26a0  | Warning.
-  ⓘ     | 24be  | Informational.
-  🗘    | 1f5d8 | Waiting.
-  ✔     | 2714  | Success.
-  ✘     | 2718  | Failure.
+ Glyph | Code  | use
+-------|-------|--------------------------
+ ➔     | 2794  | Menus, sub-items, links.
+ ⚠     | 26a0  | Warning.
+ ⓘ     | 24be  | Informational.
+ 🗘    | 1f5d8 | Waiting.
+ ✔     | 2714  | Success.
+ ✘     | 2718  | Failure.
+ ☐     | 2610  | Unchecked.
+ ☑     | 2611  | Checked.
+ ⋮     | 22ee  | Context menu.
+ ⚙     | 2699  | Settings.
+ ⌘     | 2318  | Super key.
 
 ## Alert Window Format
 

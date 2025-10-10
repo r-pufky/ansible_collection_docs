@@ -1,6 +1,6 @@
 # Submodules
 Prerequisite:
-* [ansible environment](../environment/ansible.md)
+* [ansible environment](../ansible/README.md)
 
 Collection roles are git submodules.
 

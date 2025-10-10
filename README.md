@@ -1,21 +1,21 @@
 # Ansible Collection Documentation
 Documentation and standards used for collection creation.
 
+## Environment
+[Ansible](ansible/README.md)
+
+[Podman](podman/README.md) (rootless containers)
+
+[Vagrant](vagrant/README.md) (VM manager)
+
+[VirtualBox](virtualbox/README.md) (VM platform)
 
 ## Development
-
-[Environment](environment/README.md)
+[Docstrings](docstrings/definitions.md)
 
 [Collection](collection/README.md)
 
-[Docstrings](docstrings/README.md)
-
-[Molecule](molecule/README.md)
-
-[Podman](podman/README.md)
-
 [Roles](roles/README.md)
 
-[Vagrant](vagrant/README.md)
-
-[VirtualBox](virtualbox/README.md)
+## Testing
+[Molecule](molecule/README.md)

@@ -1,8 +1,7 @@
 # VirtualBox
 Vagrant VMs are **ONLY** used to test cases which cannot be tested in
 containers (kernel, firmware, proc, systemd, networking, etc) these should
-**never** be default test cases. Vagrant is only used to manage
-[Vagrant](../vagrant/README.md) VMs.
+**never** be default test cases.
 
 [Setup](setup.md)
 

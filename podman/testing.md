@@ -1,6 +1,6 @@
 # Molecule: Podman Containers
 Prerequisite:
-* [ansible environment](../environment/ansible.md)
+* [ansible environment](../ansible/README.md)
 * [podman](setup.md)
 
 Use podman as it is a full systemd container and does not many of the issues

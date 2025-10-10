@@ -1,6 +1,6 @@
 # Role Linting
 Prerequisite:
-* [ansible environment](../environment/ansible.md)
+* [ansible environment](../ansible/README.md)
 
 # File Formatting
 **Always** follow `yamllint` and `ansible-lint` linting with **no** global
