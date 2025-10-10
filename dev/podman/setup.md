@@ -1,22 +1,18 @@
-# Setup Podman Environment
-Rootless podman environment is used to test **all** cases unless there are
-required bare-metal cases (kernel, firmware, advanced networking, etc).
-
-## Install Packages
+# Setup Rootless Podman Environment
 Prerequisite:
 * [ansible environment](../environment/ansible.md)
 
+## Install Packages
+
 ``` bash
-source {VENV}/bin/activate
+source ansible.env  # source {VENV}/bin/activate
 pip install molecule-plugins[podman]
 pacman -Syu crun  # OCI implementation (faster, less memory than runc).
 pacman -Syu podman  # Service testing (non kernel, sysctl, networking, etc).
 ```
 [Reference](https://github.com/ansible-community/molecule-podman)
 
-## Setup Rootless Podman
-
-### Verify Rootless Support
+## Verify Rootless Support
 ``` bash
 podman info | grep -i overlay
 
@@ -25,7 +21,7 @@ podman info | grep -i overlay
 ```
 `overlay` and `Diff: "true"` means supported.
 
-### Verify Unprivileged User Namespace Enabled
+## Verify Unprivileged User Namespace Enabled
 ``` bash
 sysctl kernel.unprivileged_userns_clone
 
@@ -33,7 +29,7 @@ sysctl kernel.unprivileged_userns_clone
 ```
 `1` means enabled.
 
-### Create Subordinate UID/GID Mappings
+## Create Subordinate UID/GID Mappings
 Configuration entry must exist for each user that wants to use it. New users
 created using useradd have these entries by default. If not add user defaults:
 
@@ -50,7 +46,7 @@ usermod --add-subuids 100000-165535 --add-subgids 100000-165535 {USER}
 
 [Reference](https://github.com/systemd/systemd/issues/21952)
 
-### Set Default Container Registry for Podman
+## Set Default Container Registry for Podman
 `0644 root:root` /etc/containers/registries.conf
 ``` ini
 [registries.search]
@@ -65,7 +61,18 @@ podman login
 
 [Reference](https://halukkarakaya.medium.com/how-to-configure-default-search-registries-in-podman-ea930289692)
 
-## Set alternative container storage location (optional)
+## Migrate Podman Installation
+Applies configuration changes to Podman. Critical for unprivileged podman to
+execute properly. Run as the **current** user:
+
+``` bash
+podman system reset
+podman system migrate
+```
+[Reference](https://github.com/containers/podman/issues/12715)
+
+
+### Set alternative container storage location (optional)
 Developing on containers will thrash disk especially when running molecule.
 Relocate high-use directories to a disk that can handle high wear. Prefer to
 config change as this enables quick use without configuration changes.
@@ -90,16 +97,6 @@ ln -s /hdd/cache/storage /var/lib/containers/storage  # graph
 * Consider moving and linking entire `.cache` directory.
 
 [Reference](https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md#user-configuration-files)
-
-## Migrate Podman Installation
-Applies configuration changes to Podman. Critical for unprivileged podman to
-execute properly. Run as the **current** user:
-
-``` bash
-podman system reset
-podman system migrate
-```
-[Reference](https://github.com/containers/podman/issues/12715)
 
 ## References
 

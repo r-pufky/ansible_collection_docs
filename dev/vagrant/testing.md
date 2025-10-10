@@ -2,29 +2,23 @@
 Prerequisite:
 * [ansible environment](../environment/ansible.md)
 * [virtualbox](../virtualbox/virtualbox.md)
-* [vagrant](./env.md)
+* [vagrant](./setup.md)
 
-Vagrant VMs are **ONLY** used to test cases which cannot be tested in
-containers (base OS, kernel, firmware, advanced networking, etc) these should
-**never** be `default` test cases.
-
-Created in current working directory.
 
 ## System Images Used
 Debian has stopped creating images due to licensing issues.
 
-* inception-of-things/trixie
-* boxen/debian-13 (alt - currently SSH key build issues)
+* [inception-of-things/trixie](https://portal.cloud.hashicorp.com/vagrant/discover/inception-of-things/debian-trixie)
+* [boxen/debian-13](https://portal.cloud.hashicorp.com/vagrant/discover/boxen/debian-13)
+  (alt - currently SSH key build issues)
 
-Alternatively a non-maintained Debian image may be created:
-https://raju.dev/building-debian-13-trixie-vagrant-image/
+Alternatively a [non-maintained Debian image may be created.](https://raju.dev/building-debian-13-trixie-vagrant-image/)
 
-[Reference](https://portal.cloud.hashicorp.com/vagrant/discover)
 
 ## Molecule Setup
 Standard molecule setup for vagrant with virtualbox VM.
 
-`0644 {USER}:{USER}` molecule.yml
+#### molecule.yml
 ``` yaml
 ---
 dependency:
@@ -34,21 +28,20 @@ driver:
   provider:
     name: 'virtualbox'
     enable_efi: true
+    # provider_raw_config_args:
+    #   - "customize [ 'modifyvm', :id, '--firmware', 'efi' ]"
     config_options:
       ssh.keep_alive: true
-      ssh.remote_user: 'root'  # default login user, different per VM image
-    #provider_raw_config_args:
-    #  - "customize [ 'modifyvm', :id, '--firmware', 'efi' ]"
-    # enable_efi: true
-    # both options do not seem to work? maybe an image thing.
+      ssh.remote_user: 'root'  # Vagrant login user (check VM image).
     options:
       append_platform_to_hostname: false
 provisioner:
   name: 'ansible'
   config_options:
     defaults:
-      interpreter_python: 'auto_silent'  # suppress warnings
-      callback_whitelist: 'profile_tasks, timer, yaml'  # output profiling info
+      interpreter_python: 'auto_silent'  # Suppress warnings.
+      callback_whitelist: 'profile_tasks, timer, yaml'  # Display profiling.
+      # TODO(docs): move to molecule.
       # To cache facts between molecule steps:
       #   fact_caching: 'jsonfile'
       #   fact_caching_connection: '/tmp/facts_cache'
@@ -65,20 +58,20 @@ provisioner:
       #       that:
       #         - '_test_cached_fact is defined'
       #       fail_msg: 'fact_caching has expired; re-run prepare.'
-  # inventory:  # Set all base testing configuration here.
-  #   group_vars:
-  #     all:
-  #       setup_variables: true
-  #   host_vars:
-  #     {IMAGE}-{TEST}:
-  #       setup_variables: true
+      # inventory:  # Set all base testing configuration here.
+      #   group_vars:
+      #     all:
+      #       setup_variables: true
+      #   host_vars:
+      #     {IMAGE}-{TEST}:
+      #       setup_variables: true
 platforms:
-  - name: '{ROLE}-{IMAGE}-vm-{TEST}'  # debian-13-vm-test
+  - name: '{ROLE}-{IMAGE}-vm-{TEST}'
     box: 'inception-of-things/trixie'
     memory: 4096
     cpus: 2
     interfaces:
-      - network_name: private_network  # network_name required
+      - network_name: 'private_network'  # Required.
         auto_config: true
         type: 'dhcp'
         # type: static
@@ -90,10 +83,6 @@ platforms:
       - 'vm.network "forwarded_port", guest: 8443, host: 8843'
 verifier:
   name: 'ansible'
-lint: |
-  set -e
-  yamllint .
-  ansible-lint .
 # Disable testing steps as needed with explicit reasons to minimize warnings.
 scenario:
   test_sequence:
@@ -114,7 +103,7 @@ scenario:
 
 [Reference](https://floatingpoint.sorint.it/blog/post/setting-up-molecule-for-testing-ansible-roles-with-vagrant-and-testinfra)
 
-# Running Tests
+#### converge.yml
 Always **become** the `ssh.remote_user` when creating Molecule tests or setup
 an ansible user after VM turnup to apply ansible tasks.
 
@@ -126,10 +115,4 @@ an ansible user after VM turnup to apply ansible tasks.
 ...
 ```
 
-[Reference](#failed-to-lock-apt-for-exclusive-operation)
-
-Vagrant driver does have a schema and will always generate a warning.
-``` bash
-WARNING Driver vagrant does not provide a schema.
-```
-[Reference](https://github.com/ansible/molecule/discussions/4108)
+[Reference](troubleshooting.md#failed-to-lock-apt-for-exclusive-operation)

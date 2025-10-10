@@ -6,7 +6,7 @@
 
 [VirtualBox](../virtualbox/virtualbox.md)
 
-[Vagrant](../vagrant/env.md)
+[Vagrant](../vagrant/setup.md)
 
 [VSCodium (VSCode)](vscodium.md)
 
