@@ -23,7 +23,7 @@ vboxmanage --version  # should be executable, with modules loaded
 vagrant global-status
 vagrant up --provider virtualbox  # will detail why it is not running.
 ```
-[Reference](../environment/virtualbox.md)
+[Reference](../virtualbox/virtualbox.md)
 
 ### Molecule test fails during create
 Vagrant VM name/path length limitation. Molecule creates a VM name combining

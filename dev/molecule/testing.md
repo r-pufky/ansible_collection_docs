@@ -1,19 +1,19 @@
 # Role Testing (Molecule)
 Molecule Testing framework for ansible roles.
 Prerequisite:
-* [ansible environment](../../environment/ansible.md)
+* [ansible environment](../environment/ansible.md)
 
-## [Podman Configuration](podman.md)
+## [Podman Configuration](../podman/testing.md)
 Primary test framework. Use podman as it provides a full systemd container
 without **many** of the *systemd*, *networking*, *daemon*, and space issues
 that come along with using [docker](https://github.com/r-pufky/ansible_pihole/pull/21#issuecomment-1716822044).
 
-## [Vagrant Configuration](../../vagrant/testing.md)
+## [Vagrant Configuration](../vagrant/testing.md)
 Vagrant VMs are **ONLY** used to test cases which cannot be tested in
 containers (kernel, firmware, advanced networking, etc); always use **podman**
 first.
 
-## [Manual VM Configuration](../../vagrant/manual_vm.md)
+## [Manual VM Configuration](../vagrant/manual_vm.md)
 **Extreme** circumstances only; such as testing UEFI configuration. Where full
 hardware virtualization and manual input are needed to test (e.g. secure boot
 requiring manual steps, etc). These cannot be automated and should always be
@@ -92,7 +92,7 @@ Each pattern requires a separate molecule test setup.
   * No `root` or `SYS_` capabilities
 * Do not re-test encapsulated roles and collections.
 * Decisions **not** to test a task must contain a
-  [`Decision`](../../docstrings/variables.md#docstring-decision).
+  [`Decision`](../docstrings/variables.md#docstring-decision).
 * Test before changes and **disable** `test_sequence` when testing new
   changes.
 
@@ -269,7 +269,7 @@ molecule --debug ${COMMAND}  # will enabling verbose debugging.
 ```
 
 ## Troubleshooting
-See [podman](podman.md), [vagrant](../../vagrant/testing.md), and [manual vm](../../vagrant/manual_vm.md)
+See [podman](../podman/testing.md), [vagrant](../vagrant/testing.md), and [manual vm](../vagrant/manual_vm.md)
 for framework specific troubleshooting.
 
 ### YAML files are reverted on test execution
@@ -431,8 +431,8 @@ lint: |
 ### Role changes are not being used during tests
 Role likely depends on changes in the collection that are not released yet.
 
-[build](../../collection/testing.md#build-and-install-local-collection).
+[build](../collection/testing.md#build-and-install-local-collection).
 
 Or
 
-[link](../../collection/testing.md#development-testing).
+[link](../collection/testing.md#development-testing).

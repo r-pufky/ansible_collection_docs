@@ -5,7 +5,7 @@ be `default` test cases.
 
 ## Install Packages
 Prerequisite:
-* [ansible environment](ansible.md)
+* [ansible environment](../environment/ansible.md)
 
 ``` bash
 source {VENV}/bin/activate

@@ -10,7 +10,7 @@ Prerequisite:
 
 [Linting](linting.md)
 
-[Testing](testing/molecule.md)
+[Testing](../molecule/testing.md)
 
 [Committing](../commit.md)
 

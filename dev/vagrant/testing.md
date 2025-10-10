@@ -1,7 +1,7 @@
 # Molecule: Vagrant with VirtualBox VMs
 Prerequisite:
 * [ansible environment](../environment/ansible.md)
-* [virtualbox](../environment/virtualbox.md)
+* [virtualbox](../virtualbox/virtualbox.md)
 * [vagrant](./env.md)
 
 Vagrant VMs are **ONLY** used to test cases which cannot be tested in

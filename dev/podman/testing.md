@@ -1,7 +1,7 @@
 # Molecule: Podman Containers
 Prerequisite:
-* [ansible environment](../../environment/ansible.md)
-* [podman](../../environment/podman.md)
+* [ansible environment](../environment/ansible.md)
+* [podman](./setup.md)
 
 Use podman as it is a full systemd container and does not many of the issues
 (including network issues) that docker does.
@@ -115,7 +115,7 @@ molecule test
 ```
 
 # Troubleshooting
-See [molecule](molecule.md) for specific molecule troubleshooting.
+See [molecule](../molecule/testing.md) for specific molecule troubleshooting.
 
 ## Podman required 'tmpfs' as dict, not list
 Molecule documentation refers to using `tmpfs` as a list. Podman **only**

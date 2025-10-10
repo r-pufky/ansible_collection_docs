@@ -2,9 +2,9 @@
 
 [Ansible](ansible.md)
 
-[Podman](podman.md)
+[Podman](../podman/setup.md)
 
-[VirtualBox](virtualbox.md)
+[VirtualBox](../virtualbox/virtualbox.md)
 
 [Vagrant](../vagrant/env.md)
 
