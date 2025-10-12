@@ -10,7 +10,7 @@ dependencies.
 
 [Role Development](./role/README.md)
 
-[Linting](./linting.md)
+[Linting](./role/linting.md)
 
 [Major Release Guide](./release.md)
 

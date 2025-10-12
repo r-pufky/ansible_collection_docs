@@ -12,7 +12,7 @@ releases are welcome to download the specific branch and maintain themselves.
 Assumes branching **12.x** and starting **13.x** development.
 
 1. Commit all open changes (or stash).
-2. Update and commit README.md
+2. Update and commit `README.md`.
    ```
    ### Releases
    Major release versions track Debian release versions:

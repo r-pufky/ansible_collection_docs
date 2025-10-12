@@ -4,7 +4,7 @@ Each pattern requires a separate molecule test setup.
 ## Best practices
 * Do not re-test encapsulated roles and collections.
 * Decisions **not** to test a task must contain a
-  [Decision](../docstrings/variables.md#docstring-decision).
+  [Decision](../docstrings/variable.md).
 * Use least privilege - usage comments required
   * Idempotent
   * No `root` or `SYS_` capabilities

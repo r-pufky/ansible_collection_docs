@@ -7,7 +7,7 @@ Prerequisite:
 grep -ri todo
 ```
 
-## Ensure linting follows [guidelines](../linting.md)
+## Ensure linting follows [guidelines](../role/linting.md)
 ``` bash
 grep -ri yamllint  # yamllint
 grep -ri noqa  # ansible-lint
@@ -37,7 +37,7 @@ build_ignore:
 ## Update collection submodule reference
 Required otherwise the collection will not use the updated module on checkout.
 
-[Update Submodule Reference](../../creation.md#update-submodules-for-collection)
+[Update Submodule Reference](../role/README.md#update-and-commit)
 
 ## Versioning (galaxy.yml)
 **{OS}-{MAJOR}-{MINOR}** per [Semantic Versioning v2](https://semver.org/)

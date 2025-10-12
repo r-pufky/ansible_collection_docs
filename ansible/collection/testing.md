@@ -3,8 +3,8 @@ Prerequisite:
 * [Ansible Environment](../README.md)
 
 Use community references for examples on sepcific implementations:
-[Filter Plugins](https://github.com/ansible-collections/community.general/blob/main/tests/unit/plugins/filter/test_json_patch.py)
-[Integration Tests](https://github.com/ansible-collections/community.general/blob/main/tests/integration/targets/filter_dict/tasks/main.yml)
+* [Filter Plugins](https://github.com/ansible-collections/community.general/blob/main/tests/unit/plugins/filter/test_json_patch.py)
+* [Integration Tests](https://github.com/ansible-collections/community.general/blob/main/tests/integration/targets/filter_dict/tasks/main.yml)
 
 ## Build and Install Local Collection
 The collection must be built and installed locally to be tested.

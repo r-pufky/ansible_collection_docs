@@ -10,7 +10,7 @@
  ✘     | 2718  | Failure.
  ☐     | 2610  | Unchecked.
  ☑     | 2611  | Checked.
- ⋮     | 22ee  | Context menu.
+ ⋮     | 22ee  | Additional context (or context menu).
  ⚙     | 2699  | Settings.
  ⌘     | 2318  | Super key.
 

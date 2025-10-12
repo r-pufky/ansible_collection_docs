@@ -10,12 +10,13 @@ Documentation and standards used for collection creation.
 
 [VirtualBox](virtualbox/README.md) (VM platform)
 
+
 ## Development
-[Docstrings](docstrings/definitions.md)
+* [Style Guide](docstrings/README.md)
+* [Variable Docstring](docstrings/variable.md)
+* [Task Docstring](docstrings/task.md)
+* [Unicode Glyphs](docstrings/unicode.md)
 
-[Collection](ansible/collection/README.md)
-
-[Roles](roles/README.md)
 
 ## Testing
 [Molecule](molecule/README.md)

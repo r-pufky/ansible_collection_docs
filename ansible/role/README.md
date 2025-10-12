@@ -11,7 +11,7 @@ Prerequisite:
 ``` bash
 git submodule add https://github.com/{USER}/{REPO} roles/{ROLE}
 ```
-Always add roles from repository root as [submodules](../../roles/submodules.md).
+Always add roles from repository root as submodules.
 
 [Reference](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
@@ -31,7 +31,7 @@ ansible-galaxy role init --init-path /tmp example
 .ansible
 molecule/cache
 ```
-https://github.com/r-pufky/ansible_paperless_ngx
+[Reference](https://github.com/r-pufky/ansible_paperless_ngx)
 
 
 ## Update and Commit
@@ -88,6 +88,7 @@ git add roles/{ROLE}  # Add updated submodule from collection root.
              length=32)
     }}'
   ```
+* Always [lint](linting.md).
 
 
 ## References

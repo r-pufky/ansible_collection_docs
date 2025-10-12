@@ -10,10 +10,6 @@ Prerequisite:
 
 [Releasing](../release.md)
 
-# TODO's
-
-* convert `no_log` to variable use when
-  https://github.com/ansible/ansible/issues/83323 is resolved.
 
 # References
 
