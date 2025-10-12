@@ -1,18 +1,14 @@
 # Collection Development Guidelines.
-Follow best practices with additional requirements set forth in these docs.
-
 Prerequisite:
-* [Ansible Environment](../ansible/README.md)
+* [Ansible Environment](../environment.md)
 
-[Environment Setup](../ansible/README.md)
+[One-Time Initialization](setup.md)
 
-[Modules](modules.md)
+[Testing](./testing.md)
 
-[Testing](testing.md)
+[Committing](./commit.md)
 
-[Committing](commit.md)
-
-[Releasing](../ansible/release.md)
+[Releasing](../release.md)
 
 # TODO's
 

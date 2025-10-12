@@ -1,6 +1,6 @@
 # Create New Collection
 Prerequisite:
-* [Ansible Environment](environment.md)
+* [Ansible Environment](../environment.md)
 
 ## Create new repository with minimal ansible environment
 ``` bash

@@ -1,12 +1,11 @@
 # Role Linting
-Prerequisite:
-* [Ansible Environment](./README.md)
-
-# File Formatting
+Prefer readability and consistency across files minimizing exceptions.
 **Always** follow `yamllint` and `ansible-lint` linting with **no** global
 exceptions.
 
-## 80 character width.
+See previous artifacts for [examples](https://github.com/r-pufky/ansible_paperless_ngx).
+
+## 80 character width
 Only extend past 80 characters if long variable names make it impossible.
 
 ```yaml
@@ -21,6 +20,23 @@ Only extend past 80 characters if long variable names make it impossible.
         if forgejo_config_server_ssh_trusted_user_ca_keys_filename | length > 0 else
         ""
       }}',
+
+- ansible.builtin.set_fact:
+    _unifi_cfg_legacy_properties_unifi_https_ssl_enabled_protocols: "{{
+      {} | r_pufky.data.v3(
+        section='system.properties',
+        key='unifi.https.sslEnabledProtocols',
+        raw=unifi_cfg_legacy_properties_unifi_https_ssl_enabled_protocols,
+        data=(
+          unifi_cfg_legacy_properties_unifi_https_ssl_enabled_protocols |
+          join(',')
+        ),
+        default=['TLSv1', 'SSLv2Hello'],
+        hint='list of str',
+        keep=false,
+        order=17
+        )
+      }}"
 ```
 * Single-line uses **2** space block (prefer).
 * Multi-line vars use hanging opens with **4** space block and **2** closer;
@@ -31,145 +47,98 @@ Only extend past 80 characters if long variable names make it impossible.
 
 ## Accepted Disables
 
-### yamllint: line-length (file/line)
-Must appear immediately after YAML specifier if file disable.
+#### yamllint: line-length
 ``` yaml
 ---
-# yamlint disable rule:line-length
-
+# yamllint disable rule:line-length
+...
+# yamllint enable rule:line-length
 some_long_yaml_line: 0  # yamllint disable-line rule:line-length
 ```
+* Must appear immediately after YAML specifier if file disabled.
+* Enable as soon as possible if file level disable.
 
-### ansible-lint: name[template] (line)
-For multiple variables in a `name` directive, typically file paths.
+#### noqa jinja[spacing]
+``` yaml
+- name: 'Annotate | sanitize & annotate service defaults'
+  ansible.builtin.set_fact:  # noqa jinja[spacing] readability.
+    _unifi_srv_legacy_enable: "{{ {} | r_pufky.data.v3(
+        raw=unifi_srv_legacy_enable,
+        default=true,
+        _dir='/var/lib/unifi',
+        _properties='/var/lib/unifi/system.properties',
+        hint='bool',
+        order=1
+        )
+      }}"
+```
+Disable for complex tasks (such as filters or combining dicts) - prefer human
+readability.
+
+#### ansible-lint: name[template]
 ``` yaml
 - name: 'file: {{ item.path }}/.hidden_file'  # noqa name[template] file path
 ```
+For multiple variables in a name directive - typically file paths.
 
-### ansible-lint: no-handler (line)
-For targeted handler execution where `ansible.builtin.flush_handlers` will
-trigger handlers that affect additional unconfigured services.
+#### ansible-lint: no-handler
 ``` yaml
-- name: 'reload for support changes'  # noqa no-handler execute immediately
-  when: _ufw_config.changed
-  community.general.ufw:
-    state: 'reloaded'
+- name: Update checksum'
+  when: _test_prepare.changed  # noqa no-handler execute immediately.
+  ansible.builtin.command:
+    argv:
+      - 'sed'
+      - '-i'
+      - 's/11.0.3/11.0.4/g'
+      - '{{ _test_cache }}/forgejo-11.0.4-linux-amd64.sha256'
+  changed_when: true
 ```
+Immediately execute command or handler in cases where results are required for
+role to progress.
 
-Also for display debug messages if specific states have occurred.
-``` yaml
-- name: 'HOST CHANGE'  # noqa no-handler execute immediately warning message
-  when: _ssh_rsa_host_key_changed.changed
-  ansible.builtin.debug:
-    msg: |
-      Target RSA host keys have changed. WILL produce host warning.
-  changed_when: false
-```
-
-## role/vars
-Vars listed below are required if used. All role vars `{ROLE}_role_` prefixed.
-``` yaml
-# Last time {ROLE} options were validated against a default configuration.
-{ROLE}_role_validate_date: '2024-06-14'
-{ROLE}_role_validate_release: 'bookworm'
-
-# Default packages for {ROLE}.
-{ROLE}_role_packages:
-  - 'ssh'  # meta package provides both ssh and sshd.
-
-# Default random data.
-{ROLE}_role_generated_api_key: '{{ lookup("ansible.builtin.password", "/dev/null", chars=["ascii_letters", "digits"], length=32) }}'
-```
 
 ## Name Directives
 
 ### Tasks
-Use bare descriptions.
+Use bare descriptions with pipes for multi-part steps.
 ``` yaml
 - name: 'Config'
-  ansible.builtin.include_tasks: 'config.yml'
+  ansible.builtin.include_tasks: 'config.yml'  # tasks/main.yml
 
-- name: 'Disable firewall'
+- name: 'File | disable firewall'  # tasks/file.yml
+  when: not ufw_enable
+  community.general.ufw:
+    state: 'disabled'
+
+- name: 'Sub section | file | disable firewall'  # tasks/sub_section/file.yml.
   when: not ufw_enable
   community.general.ufw:
     state: 'disabled'
 ```
 
-### tasks/[sub_section/]file.yml
-Use nested pipes to locate file then descriptions.
-``` yaml
-tasks/file.yml
-- name: 'File | disable firewall'
-  when: not ufw_enable
-  community.general.ufw:
-    state: 'disabled'
+### Clause Order
+Prioritized for readability and clarity.
 
-tasks/sub_section/file.yml
-- name: 'Sub section | file | disable firewall'
-  when: not ufw_enable
-  community.general.ufw:
-    state: 'disabled'
-```
-
-### When Clause
-Immediately following `name:` clause which follows `ansible-lint` block
-specification; allowing immediate determination of whether a task should be
-run.
 
 ``` yaml
 - name: 'task with a clause'
-  when: some_var_to_test
-  community.general.ufw:
-    state: 'disabled'
-```
-
-### Notify Clause
-Immediately following `when:` clause which follows `ansible-lint` block
-specification; allowing immediate determination of whether a task should be
-run.
-
-``` yaml
-- name: 'task with a clause'
-  when: some_var_to_test
+  when: some_var_to_test  # If when clause uses loop item, place next to loop.
   notify: 'handler'
-  community.general.ufw:
-    state: 'disabled'
-```
-
-### Become Clause
-Immediately following `task` as primary additional context.
-
-``` yaml
-- name: 'task with a clause'
   community.general.ufw:
     state: 'disabled'
   become: true
   register: _some_var
-```
-
-### Loop labels (no_log Clause)
-`no_log` currently does not honor variable interpretation and makes it
-difficult to develop and debug roles using in. Display identifying loop
-information without logging passwords by default.
-
-Use `loop_control` whenever possible to display cleaner loop executions.
-```yaml
-- name: 'looping task with passwords'
-  ansible.builtin.include_tasks: 'some_task.yml'
   loop: '{{ user_accounts }}'
   loop_control:
     label: '{{ item.user }}'
 ```
 
-Reference:
-* https://github.com/ansible/ansible/issues/83323#issuecomment-2686201726
-
 ### Handler (listen clauses)
 Use `listen` clause to run multiple handlers for a given task. `listen` can be
 a list, allowing for specific combinations as needed. Execution order is
-**always** the order as written in handlers.yml, regardless of call order.
+**always** the order as written in `handlers.yml`, regardless of call order.
 
-Handlers
+#### Handlers
 ```yaml
 - name: 'Handlers | ifreload'
   listen:
@@ -194,7 +163,7 @@ Handlers
     state: 'restarted'
 ```
 
-Usage:
+#### Usage
 ``` yaml
 - name: 'run restart networking'
   notify: 'Handlers | reload restart networking'
@@ -209,54 +178,22 @@ Usage:
   ...
 ```
 
-Reference:
-* https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html
-* https://github.com/ansible/ansible/issues/16378
+[Reference](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_handlers.html)
 
-### Comment Headers
+[Reference](https://github.com/ansible/ansible/issues/16378)
+
+## File / Section Headers
 One vertical space to allow for individual task and variable comments.
 
 ``` yaml
 ###############################################################################
 # Capped Header Text (Clarifications)
 ###############################################################################
-#
-#
+# Reference:
+# * https://some/reference
 
 - name: 'task with a clause'
   when: some_var_to_test
   community.general.ufw:
     state: 'disabled'
-```
-* `defaults`: No space if header is **only** describing a single variable.
-* Extended comment section is optional.
-
-# TODO(docs): placeholder for tasks
-
-Until bug is fixed do one of the following:
-
-with https://ansible.readthedocs.io/projects/molecule/configuration/#molecule.config.Config
-
-
-
-##### Long running tasks must notify user (use 🗘)
-Alway message user with working message for long tasks.
-
-``` yaml
-- name: 'Dist upgrade | updating 🗘'
-  ansible.builtin.debug:
-    msg: |
-      🗘 Upgrading distribution. This may take a few minutes.
-```
-
-#### Name Directives
-Use nested pipes to specify testing stage and description. Additional pipe for
-task subdirectory or file may be used if needed for additional clarification.
-
-`0644 {USER}:{USER}` converge.yml
-``` yaml
-- name: '{TEST} | Converge | run locales.yml'
-  ansible.builtin.include_role:
-    name: 'r_pufky.deb.os'
-    tasks_from: 'locales.yml'
 ```

@@ -13,7 +13,7 @@ Documentation and standards used for collection creation.
 ## Development
 [Docstrings](docstrings/definitions.md)
 
-[Collection](collection/README.md)
+[Collection](ansible/collection/README.md)
 
 [Roles](roles/README.md)
 

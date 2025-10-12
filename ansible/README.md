@@ -2,16 +2,16 @@
 Each collection uses an isolated minimal environment to minimize hidden
 dependencies.
 
-[Ansible Environment](environment.md)
+[Ansible Environment](./environment.md)
 
-[VSCodium (VSCode)](vscodium.md)
+[VSCodium (VSCode)](./vscodium.md)
 
-[Collection Creation](collection.md)
+[Collection Development](collection/README.md)
 
-[Role Creation](role.md)
+[Role Development](./role/README.md)
 
-[Linting](linting.md)
+[Linting](./linting.md)
 
-[Releasing](release.md)
+[Major Release Guide](./release.md)
 
-[Troubleshooting](troubleshooting.md)
+[Troubleshooting](./troubleshooting.md)

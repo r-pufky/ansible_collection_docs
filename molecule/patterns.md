@@ -16,6 +16,7 @@ Each pattern requires a separate molecule test setup.
   requied **explicit** enablement (See [example](https://github.com/r-pufky/ansible_repo/tree/main/molecule/live_api_test)).
 * Focus on testing **all** options and **code paths**. A component **may** test
   many options if they can be individually explicitly verified.
+* Make use of [Molecule test variables](https://ansible.readthedocs.io/projects/molecule/configuration/#molecule.config.Config)
 
 ## molecule.yml
 * Describe test.
