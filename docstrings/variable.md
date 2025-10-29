@@ -125,6 +125,9 @@ Prerequisite:
 # ⋮See r_pufky.deb.systemd defaults for example.
 #
 # Default: [] (un-managed).
+# ⋮ Default: (description).
+# ⋮   - 'long'
+# ⋮   - 'defaults'
 #
 # Reference:
 # * https://manpages.debian.org/bookworm/openssh-client/ssh_config.5.en.html
