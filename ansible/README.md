@@ -3,6 +3,12 @@ Each collection uses an isolated minimal environment to minimize hidden
 dependencies.
 
 [Ansible Environment](./environment.md)
+* [Podman](../podman/README.md) (rootless containers)
+
+* [Vagrant](../vagrant/README.md) (VM manager)
+
+* [VirtualBox](../virtualbox/README.md) (VM platform)
+
 
 [VSCodium (VSCode)](./vscodium.md)
 

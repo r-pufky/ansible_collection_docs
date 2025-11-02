@@ -8,7 +8,8 @@ python3 -m venv /var/venv/{REPO}
 source /var/venv/{REPO}/bin/activate
 pip install --upgrade pip
 pip install --upgrade setuptools
-pip install ansible
+# Lock to specific version. See reference.
+pip install ansible  # ansible==11.0  # ansible-core 2.18
 pip install argcomplete
 # Install older ansible-compat layer until issue is resolved.
 # Reference:
@@ -20,7 +21,9 @@ pip install "ansible-compat==24.10.0" ansible-lint molecule
 ```
 * `{REPO}` refers to bare repository name, e.g. **ansible_collection_srv**.
 
-[Reference](https://docs.ansible.com/ansible/2.9/installation_guide/intro_installation.html)
+References:
+* https://docs.ansible.com/ansible/latest/roadmap/ansible_roadmap_index.html
+* https://docs.ansible.com/ansible/2.9/installation_guide/intro_installation.html
 
 ## Set alternative `.ansible` role cache location
 A recent change in Ansible now creates an `.ansible` directory in each

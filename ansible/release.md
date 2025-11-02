@@ -91,12 +91,13 @@ Sanity check size/contents for unwanted inclusions.
 #### Release Dependency Order
 Collections depend on lower level dependencies. Release in this order:
 
-1. docs
 2. data
 3. lib
 4. deb
 5. srv
-6. game
+6. arr
+7. game
+8. docs
 
 #### Create new release on GitHub using tag
 * Generate release notes.
