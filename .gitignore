@@ -1,0 +1,6 @@
+site/
+.ansible/
+.ansible
+.vscode/
+COMMIT.md
+TODO.md

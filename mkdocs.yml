@@ -1,0 +1,194 @@
+---
+###############################################################################
+# MKDocs Material
+###############################################################################
+# MKDocs with material theme using minimal extensions to maintain as close to
+# vanilla markdown as possible. Other MKDoc vanilla formats may be used if
+# material-specific options are removed.
+#
+# Development:
+#   python3 -m venv /var/venv/docs
+#   source /var/venv/docs/bin/activate
+#   pip install --upgrade pip
+#   pip install mkdocs mkdocs-material mkdocs-glightbox
+#   pip install mkdocs-git-revision-date-localized-plugin
+#   mkdocs serve --livereload
+#
+# All warnings and errors must be resolved before committing.
+#
+# Reference:
+# * https://www.mkdocs.org/
+
+###############################################################################
+# Page Configuration
+###############################################################################
+site_name: 'Ansible Development'
+repo_url: 'https://github.com/r-pufky/ansible_collection_docs'
+site_url: 'https://github.com/r-pufky/ansible_collection_docs'
+edit_uri: 'edit/main/docs'
+site_author: 'r-pufky'
+copyright: '©2025'
+remote_branch: 'gh-pages'
+remote_name: 'origin'
+
+nav:
+  - 'README.md'
+  - 'Ansible':
+      - 'Environment':
+          - 'ansible/environment/README.md'
+          - 'ansible/environment/vscodium.md'
+      - 'Collection Development':
+          - 'ansible/collection/README.md'
+          - 'ansible/collection/testing.md'
+          - 'ansible/collection/commit.md'
+          - 'ansible/collection/release.md'
+          - 'ansible/collection/troubleshooting.md'
+      - 'Role Development':
+          - 'ansible/role/README.md'
+          - 'ansible/role/best_practices.md'
+          - 'ansible/role/style_guide.md'
+      - 'ansible/troubleshooting.md'
+  - 'Test Environments':
+      - 'Molecule':
+          - 'test_environments/molecule/README.md'
+          - 'test_environments/molecule/best_practices.md'
+          - 'test_environments/molecule/testing.md'
+          - 'test_environments/molecule/troubleshooting.md'
+      - 'Podman':
+          - 'test_environments/podman/README.md'
+          - 'test_environments/podman/testing.md'
+          - 'test_environments/podman/troubleshooting.md'
+      - 'Vagrant':
+          - 'test_environments/vagrant/README.md'
+          - 'test_environments/vagrant/testing.md'
+          - 'test_environments/vagrant/manual_vm.md'
+          - 'test_environments/vagrant/troubleshooting.md'
+      - 'VirtualBox':
+          - 'test_environments/virtualbox/README.md'
+          - 'test_environments/virtualbox/troubleshooting.md'
+  - 'Docstring':
+      - 'docstring/README.md'
+      - 'docstring/unicode.md'
+      - 'docstring/task.md'
+      - 'docstring/variable.md'
+
+extra:
+  social:
+    - icon: 'fontawesome/brands/github'
+      link: 'https://github.com/r-pufky'
+    - icon: 'material/ansible'
+      link: 'https://galaxy.ansible.com/ui/namespaces/r_pufky'
+    - icon: 'simple/gnuprivacyguard'
+      link: 'https://keys.openpgp.org/vks/v1/by-fingerprint/466EEC2B67516C7117C85CE3A0BC35D16698BAB9'
+
+###############################################################################
+# Theme Configuration
+###############################################################################
+# MKDocs with material theme using minimal extensions to maintain as close to
+# vanilla markdown as possible. Other MKDoc vanilla formats may be used if
+# material-specific options are removed.
+#
+# Reference:
+# * https://squidfunk.github.io/mkdocs-material
+# * https://squidfunk.github.io/mkdocs-material/reference/
+
+theme:
+  name: 'material'
+  palette:  # Material theme (auto, light, dark).
+    - media: '(prefers-color-scheme)'
+      toggle:
+        icon: 'material/link'
+        name: 'Switch to light mode'
+    - media: '(prefers-color-scheme: light)'
+      scheme: 'default'
+      primary: 'indigo'
+      accent: 'indigo'
+      toggle:
+        icon: 'material/toggle-switch'
+        name: 'Switch to dark mode'
+    - media: '(prefers-color-scheme: dark)'
+      scheme: 'slate'
+      primary: 'black'
+      accent: 'indigo'
+      toggle:
+        icon: 'material/toggle-switch-off'
+        name: 'Switch to system preference'
+  icon:
+    annotation: 'material/chevron-right-circle'
+  features:
+    - 'navigation.instant'  # Requires site_url.
+    - 'navigation.instant.prefetch'
+    - 'navigation.instant.progress'
+    - 'navigation.tracking'  # URL shows anchor tags.
+    - 'navigation.path'
+    - 'navigation.indexes'
+    - 'navigation.top'
+    - 'search.suggest'
+    - 'search.highlight'
+    - 'toc.follow'
+    - 'header.autohide'
+    - 'content.action.edit'  # Requires edit_uri.
+    - 'content.footnote.tooltips'
+  navigation_depth: 5
+  locale: 'en'
+  language: 'en'
+
+markdown_extensions:
+  - 'attr_list'  # HTML Attribute lists.
+  - 'def_list'  # HTML Definition lists.
+  - 'footnotes'  # Footnotes.
+  - 'md_in_html'  # Markdown in HTML.
+  - 'tables'  # Sortable tables (theme/init.js).
+  - 'pymdownx.betterem'  # Github flavored emphasis handling.
+  - 'pymdownx.magiclink'  # Autolink URI's.
+  - 'pymdownx.superfences'  # HTML block nesting.
+
+  # Admonitions.
+  - 'admonition'
+  - 'pymdownx.details'
+
+  # Emoji
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # Github flavored checklists.
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # Syntax Highlighting.
+  - pymdownx.highlight:
+      use_pygments: false  # Use highlight.js for Material.
+  - 'pymdownx.inlinehilite'
+
+plugins:
+  - 'glightbox' # Inline images.
+
+  # Created, last update footers.
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+  - 'search'  # Search
+
+###############################################################################
+# Material Code Highlighting
+###############################################################################
+# Material use Python Pygments - highlight.js provides better highlights for
+# non-python code.
+#
+# Disable Python Pygments and use highlight.js. Code highlight theme is set
+# with extra_css, not integration hljs.* options.
+#
+# Reference:
+# * https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight-mkdocsyml
+# * https://github.com/squidfunk/mkdocs-material/issues/1004
+# * https://github.com/highlightjs/highlight.js/tree/main/src/styles
+# * https://highlightjs.org/demo
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js'
+  - 'https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js'
+  - '_material/init.js'
+
+extra_css:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/vs2015.min.css'
