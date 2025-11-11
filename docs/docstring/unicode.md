@@ -2,7 +2,7 @@
 
 ## Text Glyphs
 
- Glyph | Code  | use
+ Glyph | Code  | Use
 ------:|:------|--------------------------
  ➔     | 2794  | Menus, sub-items, links.
  ⚠     | 26a0  | Warning.
@@ -18,15 +18,15 @@
 
 ## Alert Window Glyphs
 
- Glyph | Code | use
+ Glyph | Code | Use
 ------:|:----|----------------------
- ─     | 26a0 | horizontal line.
+ ─     | 2500 | horizontal line.
  │     | 2502 | Vertical line.
- ╭     | 2714 | Top left corner.
- ╮     | 2718 | Top right corner.
- ╯     | 2718 | Bottom right corner.
- ╰     | 2718 | Bottom left corner.
- ├     | 2718 | Bottom left message.
+ ╭     | 256D | Top left corner.
+ ╮     | 256E | Top right corner.
+ ╯     | 256F | Bottom right corner.
+ ╰     | 2570 | Bottom left corner.
+ ├     | 251C | Bottom left message.
 
 ## Window Alert
 Windows are 70 characters wide with minimum 1 character space horizontally,
